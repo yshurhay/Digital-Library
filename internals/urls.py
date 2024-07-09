@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
+from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from django.urls import include, path
@@ -27,7 +28,9 @@ for version in settings.API_VERSIONS:
     views_modules = GetViewsService.call(version)
     paths += [path(f'api/{version}/', include(view_module)) for view_module in views_modules]
 
+
 urlpatterns = paths + [
+    path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),  # For Swagger auth
     path('doc', login_required(SwaggerView.as_view())),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

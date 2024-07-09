@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     # Django
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
 
     # Project apps
     'apps.users',
+    'apps.books',
     'internals',
 ]
 
@@ -133,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+    # 'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'apps.users.services.auth.authentication_service.JSONWebTokenAuthentication',
     ),
@@ -208,7 +210,7 @@ ADMIN_NEW_LOGIN_TIMEOUT_MINUTES = 15
 # prefix: {HOST}/{version}/{endpoint_name}
 # In addition endpoint should be placed
 # into urlpatterns to urls_{version}.py file
-API_VERSIONS = ('v1', 'v2', )
+API_VERSIONS = ('v1', 'v2', 'v3')
 
 
 # Logging configuration
