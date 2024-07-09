@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models.book import Book
-from .models.genre import Genre
-from .models.author import Author
+from .models import Book, Genre, Author
 
 admin.site.register(Book)
 admin.site.register(Genre)

@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     # Project apps
     'apps.users',
     'apps.books',
+    'apps.comments',
+    'apps.libraries',
     'internals',
 ]
 
@@ -210,7 +212,7 @@ ADMIN_NEW_LOGIN_TIMEOUT_MINUTES = 15
 # prefix: {HOST}/{version}/{endpoint_name}
 # In addition endpoint should be placed
 # into urlpatterns to urls_{version}.py file
-API_VERSIONS = ('v1', 'v2', 'v3')
+API_VERSIONS = ('v1', 'v2', 'v3', 'v4',)
 
 
 # Logging configuration
