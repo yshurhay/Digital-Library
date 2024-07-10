@@ -1,9 +1,12 @@
-from django.urls import path
+from django.urls import path, re_path
 
-from .views import CommentListAPIView, RatingListAPIView
+from .views import (CommentListCreateAPIView, CommentRetrieveUpdateDestroyAPIView,
+                    RatingListCreateAPIView, RatingRetrieveUpdateDestroyAPIView)
 
 
 urlpatterns = [
-    path('comments/', CommentListAPIView.as_view()),
-    path('ratings/', RatingListAPIView.as_view()),
+    path('comments/', CommentListCreateAPIView.as_view()),
+    re_path('comments/(?P<pk>[^/.]+)', CommentRetrieveUpdateDestroyAPIView.as_view()),
+    path('ratings/', RatingListCreateAPIView.as_view()),
+    re_path('ratings/(?P<pk>[^/.]+)', RatingRetrieveUpdateDestroyAPIView.as_view()),
 ]

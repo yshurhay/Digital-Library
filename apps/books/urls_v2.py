@@ -1,10 +1,15 @@
-from django.urls import path
+from django.urls import path, re_path
 
-from .views import BookListAPIView, AuthorListAPIView, GenreListAPIView
+from .views import (BookListCreateAPIView, BookRetrieveUpdateDestroyAPIView,
+                    AuthorListCreateAPIView, AuthorRetrieveUpdateDestroyAPIView,
+                    GenreListCreateAPIView, GenreRetrieveUpdateDestroyAPIView)
 
 
 urlpatterns = [
-    path('books/', BookListAPIView.as_view()),
-    path('authors/', AuthorListAPIView.as_view()),
-    path('genres/', GenreListAPIView.as_view()),
+    path('books/', BookListCreateAPIView.as_view()),
+    re_path('books/(?P<pk>[^/.]+)', BookRetrieveUpdateDestroyAPIView.as_view()),
+    path('authors/', AuthorListCreateAPIView.as_view()),
+    re_path('authors/(?P<pk>[^/.]+)', AuthorRetrieveUpdateDestroyAPIView.as_view()),
+    path('genres/', GenreListCreateAPIView.as_view()),
+    re_path('genres/(?P<pk>[^/.]+)', GenreRetrieveUpdateDestroyAPIView.as_view()),
 ]

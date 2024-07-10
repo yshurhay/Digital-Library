@@ -1,8 +1,10 @@
-from .comment_endpoint import CommentListAPIView
-from .rating_endpoint import RatingListAPIView
+from .comment_endpoint import CommentListCreateAPIView, CommentRetrieveUpdateDestroyAPIView
+from .rating_endpoint import RatingListCreateAPIView, RatingRetrieveUpdateDestroyAPIView
 
 
 __all__ = (
-    'CommentListAPIView',
-    'RatingListAPIView',
+    'CommentListCreateAPIView',
+    'CommentRetrieveUpdateDestroyAPIView',
+    'RatingListCreateAPIView',
+    'RatingRetrieveUpdateDestroyAPIView',
 )

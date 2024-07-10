@@ -1,10 +1,13 @@
-from .library_endpoint import LibraryListAPIView
-from .book_instance_endpoint import BookInstanceListAPIView
-from .user_library_endpoint import UserLibraryListAPIView
+from .library_endpoint import LibraryListCreateAPIView, LibraryRetrieveUpdateDestroyAPIView
+from .book_instance_endpoint import BookInstanceListCreateAPIView, BookInstanceRetrieveUpdateDestroyAPIView
+from .user_library_endpoint import UserLibraryListCreateAPIView, UserLibraryRetrieveUpdateDestroyAPIView
 
 
 __all__ = (
-    'LibraryListAPIView',
-    'BookInstanceListAPIView',
-    'UserLibraryListAPIView',
+    'LibraryListCreateAPIView',
+    'LibraryRetrieveUpdateDestroyAPIView',
+    'BookInstanceListCreateAPIView',
+    'BookInstanceRetrieveUpdateDestroyAPIView',
+    'UserLibraryListCreateAPIView',
+    'UserLibraryRetrieveUpdateDestroyAPIView',
 )
