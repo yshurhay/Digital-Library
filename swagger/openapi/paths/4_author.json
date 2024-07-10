@@ -1,0 +1,157 @@
+{
+  "/api/v2/authors/": {
+    "get": {
+      "summary": "Get a list of authors",
+      "operationId": "getAuthors",
+      "tags": [
+        "Author"
+      ],
+      "responses": {
+        "200": {
+          "description": "A list of authors",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Create a new author",
+      "operationId": "createAuthor",
+      "tags": [
+        "Author"
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AuthorCreate"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "201": {
+          "description": "Author created",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Author"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/api/v2/authors/{id}/": {
+    "get": {
+      "summary": "Get an author by ID",
+      "operationId": "getAuthorById",
+      "tags": [
+        "Author"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A single author",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Author"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Author not found"
+        }
+      }
+    },
+    "put": {
+      "summary": "Update an author by ID",
+      "operationId": "updateAuthorById",
+      "tags": [
+        "Author"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AuthorCreate"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "Author updated",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Author"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Author not found"
+        }
+      }
+    },
+    "delete": {
+      "summary": "Delete an author by ID",
+      "operationId": "deleteAuthorById",
+      "tags": [
+        "Author"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "Author deleted"
+        },
+        "404": {
+          "description": "Author not found"
+        }
+      }
+    }
+  }
+}
+

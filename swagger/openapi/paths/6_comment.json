@@ -1,0 +1,156 @@
+{
+  "/api/v3/comments/": {
+    "get": {
+      "summary": "Get a list of comments",
+      "operationId": "getComments",
+      "tags": [
+        "Comment"
+      ],
+      "responses": {
+        "200": {
+          "description": "A list of comments",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Comment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Create a new comment",
+      "operationId": "createComment",
+      "tags": [
+        "Comment"
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CommentCreate"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "201": {
+          "description": "Comment created",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Comment"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/api/v3/comments/{id}/": {
+    "get": {
+      "summary": "Get a comment by ID",
+      "operationId": "getCommentById",
+      "tags": [
+        "Comment"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "A single comment",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Comment"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Comment not found"
+        }
+      }
+    },
+    "put": {
+      "summary": "Update a comment by ID",
+      "operationId": "updateCommentById",
+      "tags": [
+        "Comment"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CommentCreate"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "Comment updated",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Comment"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Comment not found"
+        }
+      }
+    },
+    "delete": {
+      "summary": "Delete a comment by ID",
+      "operationId": "deleteCommentById",
+      "tags": [
+        "Comment"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "Comment deleted"
+        },
+        "404": {
+          "description": "Comment not found"
+        }
+      }
+    }
+  }
+}

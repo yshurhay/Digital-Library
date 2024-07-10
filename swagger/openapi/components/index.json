@@ -88,7 +88,7 @@
       "properties": {
         "id": {
           "type": "integer",
-          "example": "123"
+          "example": 1
         },
         "email": {
           "type": "string",
@@ -107,6 +107,454 @@
           "example": "active"
         }
       }
+    },
+    "Book": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "readOnly": true,
+          "example": 1
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "The Great Gatsby"
+        },
+        "author": {
+          "type": "integer",
+          "description": "ID of the Author",
+          "nullable": true,
+          "example": 1
+        },
+        "genre": {
+          "type": "integer",
+          "description": "ID of the Genre",
+          "nullable": true,
+          "example": 1
+        },
+        "year": {
+          "type": "integer",
+          "example": 1925
+        },
+        "country": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "United States"
+        },
+        "description": {
+          "type": "string",
+          "nullable": true,
+          "example": "A novel by F. Scott Fitzgerald"
+        },
+        "is_public": {
+          "type": "boolean",
+          "default": false,
+          "example": true
+        }
+      },
+      "required": [
+        "title",
+        "year",
+        "country"
+      ]
+    },
+    "BookCreate": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "To Kill a Mockingbird"
+        },
+        "author": {
+          "type": "integer",
+          "description": "ID of the Author",
+          "nullable": true,
+          "example": 2
+        },
+        "genre": {
+          "type": "integer",
+          "description": "ID of the Genre",
+          "nullable": true,
+          "example": 3
+        },
+        "year": {
+          "type": "integer",
+          "example": 1960
+        },
+        "country": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "United States"
+        },
+        "description": {
+          "type": "string",
+          "nullable": true,
+          "example": "A novel by Harper Lee"
+        },
+        "is_public": {
+          "type": "boolean",
+          "default": false,
+          "example": true
+        }
+      },
+      "required": [
+        "title",
+        "year",
+        "country"
+      ]
+    },
+    "Author": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "readOnly": true,
+          "example": 1
+        },
+        "first_name": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "F. Scott"
+        },
+        "last_name": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "Fitzgerald"
+        }
+      },
+      "required": [
+        "first_name",
+        "last_name"
+      ]
+    },
+    "AuthorCreate": {
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "Harper"
+        },
+        "last_name": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "Lee"
+        }
+      },
+      "required": [
+        "first_name",
+        "last_name"
+      ]
+    },
+    "Genre": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "readOnly": true,
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "Fiction"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "GenreCreate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "Mystery"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "Comment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "readOnly": true,
+          "example": 1
+        },
+        "user": {
+          "type": "integer",
+          "description": "ID of the User",
+          "example": 1
+        },
+        "book": {
+          "type": "integer",
+          "description": "ID of the Book",
+          "example": 1
+        },
+        "text": {
+          "type": "string",
+          "example": "This is a great book!"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-07-10T12:00:00Z"
+        }
+      },
+      "required": [
+        "user",
+        "book",
+        "text"
+      ]
+    },
+    "CommentCreate": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "integer",
+          "description": "ID of the User",
+          "example": 1
+        },
+        "book": {
+          "type": "integer",
+          "description": "ID of the Book",
+          "example": 1
+        },
+        "text": {
+          "type": "string",
+          "example": "I enjoyed reading this!"
+        }
+      },
+      "required": [
+        "user",
+        "book",
+        "text"
+      ]
+    },
+    "Rating": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "readOnly": true,
+          "example": 1
+        },
+        "user": {
+          "type": "integer",
+          "description": "ID of the User",
+          "example": 1
+        },
+        "book": {
+          "type": "integer",
+          "description": "ID of the Book",
+          "example": 1
+        },
+        "rating": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "example": 8
+        }
+      },
+      "required": [
+        "user",
+        "book",
+        "rating"
+      ]
+    },
+    "RatingCreate": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "integer",
+          "description": "ID of the User",
+          "example": 1
+        },
+        "book": {
+          "type": "integer",
+          "description": "ID of the Book",
+          "example": 1
+        },
+        "rating": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "example": 7
+        }
+      },
+      "required": [
+        "user",
+        "book",
+        "rating"
+      ]
+    },
+    "Library": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "readOnly": true,
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "Central Library"
+        },
+        "address": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "123 Main Street"
+        }
+      },
+      "required": [
+        "name",
+        "address"
+      ]
+    },
+    "LibraryCreate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "Westside Branch"
+        },
+        "address": {
+          "type": "string",
+          "maxLength": 255,
+          "example": "456 Elm Avenue"
+        }
+      },
+      "required": [
+        "name",
+        "address"
+      ]
+    },
+    "BookInstance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "readOnly": true,
+          "example": 1
+        },
+        "book": {
+          "type": "integer",
+          "description": "ID of the Book",
+          "example": 1
+        },
+        "library": {
+          "type": "integer",
+          "description": "ID of the Library",
+          "example": 1
+        },
+        "is_available": {
+          "type": "boolean",
+          "example": true
+        },
+        "due_back": {
+          "type": "string",
+          "format": "date",
+          "nullable": true,
+          "example": "2024-08-01"
+        }
+      },
+      "required": [
+        "book",
+        "library",
+        "is_available"
+      ]
+    },
+    "BookInstanceCreate": {
+      "type": "object",
+      "properties": {
+        "book": {
+          "type": "integer",
+          "description": "ID of the Book",
+          "example": 1
+        },
+        "library": {
+          "type": "integer",
+          "description": "ID of the Library",
+          "example": 1
+        },
+        "is_available": {
+          "type": "boolean",
+          "example": true
+        },
+        "due_back": {
+          "type": "string",
+          "format": "date",
+          "nullable": true,
+          "example": "2024-08-01"
+        }
+      },
+      "required": [
+        "book",
+        "library",
+        "is_available"
+      ]
+    },
+    "UserLibrary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "readOnly": true,
+          "example": 1
+        },
+        "user": {
+          "type": "integer",
+          "description": "ID of the User",
+          "example": 1
+        },
+        "books": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "example": [
+              1,
+              2,
+              3
+            ]
+          }
+        }
+      },
+      "required": [
+        "user",
+        "books"
+      ]
+    },
+    "UserLibraryCreate": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "integer",
+          "description": "ID of the User",
+          "example": 1
+        },
+        "books": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "example": [
+              1,
+              2
+            ]
+          }
+        }
+      },
+      "required": [
+        "user",
+        "books"
+      ]
     }
   },
   "securitySchemes": {
