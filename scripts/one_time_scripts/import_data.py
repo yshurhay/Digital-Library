@@ -15,7 +15,6 @@ def perform(args):
         """)
         return
 
-
     logger.info(
         f"\nImporting {setting['name']} data")
 
