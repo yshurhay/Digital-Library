@@ -5,8 +5,8 @@ from .views import (CommentListCreateAPIView, CommentRetrieveUpdateDestroyAPIVie
 
 
 urlpatterns = [
-    path('comments/', CommentListCreateAPIView.as_view()),
-    re_path('comments/(?P<pk>[^/.]+)', CommentRetrieveUpdateDestroyAPIView.as_view()),
+    path('comments/', CommentListCreateAPIView.as_view(), name='comment-list'),
+    re_path('comments/(?P<pk>[^/.]+)', CommentRetrieveUpdateDestroyAPIView.as_view(), name='comment-detail'),
     path('ratings/', RatingListCreateAPIView.as_view()),
     re_path('ratings/(?P<pk>[^/.]+)', RatingRetrieveUpdateDestroyAPIView.as_view()),
 ]
