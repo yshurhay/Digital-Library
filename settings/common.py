@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_filters',
     'corsheaders',
+    'django_elasticsearch_dsl',
 
     # Project apps
     'apps.users',
@@ -150,6 +151,13 @@ JWT_AUTH = {
     'JWT_SECRET_KEY': JWT_SECRET_KEY,
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
     'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=30),
+}
+
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'http://localhost:9200'
+    },
 }
 
 TIMEOUT_IN_MINUTES_TIME = int(os.environ.get('TIMEOUT_IN_MINUTES_TIME', 0))

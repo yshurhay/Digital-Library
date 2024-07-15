@@ -1,6 +1,7 @@
 from .authors_endpoint import AuthorListCreateAPIView, AuthorRetrieveUpdateDestroyAPIView
 from .books_endpoint import BookListCreateAPIView, BookRetrieveUpdateDestroyAPIView
 from .genres_endpoint import GenreListCreateAPIView, GenreRetrieveUpdateDestroyAPIView
+from .search import SearchBooks
 
 __all__ = (
     'AuthorListCreateAPIView',
@@ -9,4 +10,5 @@ __all__ = (
     'BookRetrieveUpdateDestroyAPIView',
     'GenreListCreateAPIView',
     'GenreRetrieveUpdateDestroyAPIView',
+    'SearchBooks'
 )
